@@ -41,7 +41,7 @@ export default function AboutPage() {
     <div className="bg-white">
       {/* Hero */}
       <section className="mx-auto max-w-7xl px-4 py-16 text-center lg:px-8">
-        <p className="text-sm font-bold tracking-widest text-green-600">
+        <p className="text-sm font-bold tracking-widest text-(--primary)">
           ABOUT SHOPNEST
         </p>
         <h1 className="mx-auto mt-3 max-w-2xl text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -81,7 +81,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-6 inline-block rounded-md bg-green-600 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-green-700"
+            className="mt-6 inline-block rounded-md bg-(--primary) px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-green-700"
           >
             GET IN TOUCH
           </Link>
@@ -89,7 +89,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="bg-green-600">
+      <section className="bg-(--primary)">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-12 text-center lg:grid-cols-4 lg:px-8">
           {stats.map((stat) => (
             <div key={stat.label}>
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 key={value.title}
                 className="rounded-xl border border-gray-100 p-6 text-center"
               >
-                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-50 text-green-600">
+                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-50 text-(--primary)">
                   <Icon className="h-5 w-5" />
                 </span>
                 <h3 className="mt-4 text-sm font-bold text-gray-900">
@@ -153,7 +153,7 @@ export default function AboutPage() {
           </div>
           <Link
             href="/"
-            className="shrink-0 rounded-md bg-green-600 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-green-700"
+            className="shrink-0 rounded-md bg-(--primary) px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-green-700"
           >
             BROWSE PRODUCTS
           </Link>
