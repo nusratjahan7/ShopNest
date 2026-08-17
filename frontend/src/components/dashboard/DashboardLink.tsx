@@ -23,14 +23,14 @@ export type DashboardLink = {
 
 export const dashboardLinks: Record<Role, DashboardLink[]> = {
   user: [
-    { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
+    { label: "Overview", href: "/dashboard/admin", icon: LayoutDashboard },
     { label: "My Orders", href: "/dashboard/orders", icon: Package },
     { label: "Wishlist", href: "/dashboard/wishlist", icon: Heart },
     { label: "Cart", href: "/dashboard/cart", icon: ShoppingBag },
     { label: "Settings", href: "/dashboard/settings", icon: Settings },
   ],
   seller: [
-    { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
+    { label: "Overview", href: "/dashboard/seller", icon: LayoutDashboard },
     { label: "My Products", href: "/dashboard/products", icon: Store },
     { label: "Orders", href: "/dashboard/orders", icon: ListOrdered },
     { label: "Earnings", href: "/dashboard/earnings", icon: Wallet },
@@ -38,7 +38,7 @@ export const dashboardLinks: Record<Role, DashboardLink[]> = {
     { label: "Settings", href: "/dashboard/settings", icon: Settings },
   ],
   admin: [
-    { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
+    { label: "Overview", href: "/dashboard/seller", icon: LayoutDashboard },
     { label: "Users", href: "/dashboard/users", icon: Users },
     { label: "Sellers", href: "/dashboard/sellers", icon: Store },
     { label: "Orders", href: "/dashboard/orders", icon: ListOrdered },

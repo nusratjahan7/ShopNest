@@ -138,7 +138,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
   };
 
   return (
-    <header className="w-full bg-(--background) border-b border-gray-100 font-sans">
+    <header className="sticky top-0 z-40 w-full bg-(--background) border-b border-gray-100 font-sans">
       {/* Top row */}
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:py-4 lg:px-8">
         {/* Mobile: hamburger */}
