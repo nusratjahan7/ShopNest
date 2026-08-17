@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "../auth";
 
-
 interface AuthUser {
   id: string;
   email: string;
