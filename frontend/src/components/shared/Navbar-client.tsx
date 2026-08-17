@@ -153,7 +153,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
 
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 text-white sm:h-9 sm:w-9">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-(--primary) text-white sm:h-9 sm:w-9">
             <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
           </span>
           <span className="leading-tight">
@@ -276,7 +276,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
           <Link href="/cart" className="flex items-center gap-2">
             <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-600">
               <ShoppingCart className="h-4 w-4" />
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-green-600 text-[10px] font-bold text-white">
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-(--primary) text-[10px] font-bold text-white">
                 {cartCount}
               </span>
             </span>
@@ -291,7 +291,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
       </div>
 
       {/* Promo / search bar */}
-      <div className="w-full bg-green-600">
+      <div className="w-full bg-(--primary)">
         <div className="mx-auto flex max-w-7xl flex-col items-stretch gap-3 px-4 py-3 sm:items-center lg:flex-row lg:justify-between lg:px-8">
           {/* Search */}
           <div className="flex w-full items-stretch overflow-hidden rounded-md bg-white lg:w-auto lg:flex-1 lg:max-w-xl">
@@ -370,7 +370,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-2"
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 text-white">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-(--primary) text-white">
                   <ShoppingCart className="h-4 w-4" />
                 </span>
                 <span className="text-base font-extrabold tracking-tight text-gray-900">
@@ -424,7 +424,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
               >
                 <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-600">
                   <ShoppingCart className="h-4 w-4" />
-                  <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-green-600 text-[10px] font-bold text-white">
+                  <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-(--primary) text-[10px] font-bold text-white">
                     {cartCount}
                   </span>
                 </span>
