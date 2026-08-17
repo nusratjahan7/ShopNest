@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Eye, EyeOff, Check, X } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 const PASSWORD_RULES: { label: string; test: (v: string) => boolean }[] = [
   { label: "At least 8 characters", test: (v) => v.length >= 8 },
@@ -32,7 +33,6 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
@@ -58,11 +58,10 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
 
     const validationError = validate();
     if (validationError) {
-      setError(validationError);
+      toast.error(validationError);
       return;
     }
 
@@ -75,28 +74,28 @@ export default function RegisterPage() {
       });
 
       if (signUpError) {
-        setError(signUpError.message ?? "Something went wrong. Please try again.");
+        toast.error(signUpError.message ?? "Something went wrong. Please try again.");
         return;
       }
 
+      toast.success("Account created successfully! Please log in.");
       router.push("/auth/login");
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   const handleGoogleSignUp = async () => {
-    setError(null);
     setGoogleLoading(true);
     try {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/dashboard", // where to land after successful auth
+        callbackURL: "/",
       });
     } catch (err) {
-      setError("Could not sign up with Google. Please try again.");
+      toast.error("Could not sign up with Google. Please try again.");
       setGoogleLoading(false);
     }
   };
@@ -124,12 +123,6 @@ export default function RegisterPage() {
           <p className="text-xs tracking-widest text-gray-400 font-medium mt-1 mb-6">
             JOIN TO US
           </p>
-
-          {error && (
-            <div className="mb-4 rounded-md bg-red-50 border border-red-200 text-red-600 text-sm px-3 py-2">
-              {error}
-            </div>
-          )}
 
           <button
             type="button"
