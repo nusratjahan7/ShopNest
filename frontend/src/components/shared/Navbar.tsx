@@ -80,8 +80,8 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
 
-  const cartCount = 5;
-  const cartTotal = "$1,689.00";
+  const cartCount = 0;
+  const cartTotal = "$0";
 
   return (
     <header className="w-full border-b border-gray-100 font-sans">
@@ -159,7 +159,7 @@ export default function Navbar() {
             <span className="text-left leading-tight">
               <span className="block text-[11px] text-gray-400">WELCOME</span>
               <Link
-                href="/login"
+                href="/auth/login"
                 className="block text-xs font-bold text-gray-900 hover:text-green-600"
               >
                 LOG IN / REGISTER
