@@ -1,0 +1,1 @@
+import {Schema,model} from "mongoose";const s=new Schema({userId:{type:String,required:true,unique:true,index:true},items:[{productId:{type:Schema.Types.ObjectId,ref:"Product"},quantity:{type:Number,min:1}}]},{timestamps:true});export const CartModel=model("Cart",s);

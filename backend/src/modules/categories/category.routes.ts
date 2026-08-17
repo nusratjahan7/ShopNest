@@ -1,0 +1,6 @@
+import { Router } from "express"; import { z } from "zod"; import { CategoryModel } from "./category.model.js"; import { requireAuth } from "../../middlewares/auth.middleware.js"; import { asyncHandler } from "../../utils/async-handler.js"; import { ok, created } from "../../utils/api-response.js"; import { ApiError } from "../../utils/api-error.js";
+const router=Router(); const schema=z.object({name:z.string().trim().min(2).max(100),slug:z.string().regex(/^[a-z0-9-]+$/),description:z.string().max(500).optional(),image:z.url().optional()});
+router.get("/",asyncHandler(async(_req,res)=>res.json(ok(await CategoryModel.find({isActive:true}).sort({name:1}).lean()))));
+router.post("/",requireAuth,asyncHandler(async(req,res)=>{const b=schema.parse(req.body); const c=await CategoryModel.create(b); res.status(201).json(created(c));}));
+router.patch("/:id",requireAuth,asyncHandler(async(req,res)=>{const c=await CategoryModel.findByIdAndUpdate(req.params.id,schema.partial().parse(req.body),{new:true,runValidators:true}); if(!c) throw new ApiError(404,"Category not found"); res.json(ok(c));}));
+router.delete("/:id",requireAuth,asyncHandler(async(req,res)=>{const c=await CategoryModel.findByIdAndUpdate(req.params.id,{isActive:false},{new:true}); if(!c) throw new ApiError(404,"Category not found"); res.json(ok(null,"Category removed"));})); export default router;
