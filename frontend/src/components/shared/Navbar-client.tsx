@@ -138,7 +138,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
   };
 
   return (
-    <header className="w-full border-b bg-(--background) border-gray-100 font-sans">
+    <header className="w-full bg-(--background) border-b border-gray-100 font-sans">
       {/* Top row */}
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:py-4 lg:px-8">
         {/* Mobile: hamburger */}
@@ -153,7 +153,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
 
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-(--primary) text-white sm:h-9 sm:w-9">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 text-white sm:h-9 sm:w-9">
             <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
           </span>
           <span className="leading-tight">
@@ -174,7 +174,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
             >
               <Link
                 href={link.href}
-                className="flex items-center gap-1 text-sm font-semibold text-gray-800 hover:text-green-600"
+                className="flex items-center gap-1 text-sm font-semibold text-gray-800 hover:text-(--primary)"
               >
                 {link.label}
                 {link.dropdown && <ChevronDown className="h-3.5 w-3.5" />}
@@ -187,7 +187,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
                       <Link
                         key={item.label}
                         href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-green-600"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-(--primary)"
                       >
                         {item.label}
                       </Link>
@@ -222,7 +222,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
                   <button
                     type="button"
                     onClick={() => setAccountOpen((v) => !v)}
-                    className="flex items-center gap-1 text-xs font-bold text-gray-900 hover:text-green-600"
+                    className="flex items-center gap-1 text-xs font-bold text-gray-900 hover:text-(--primary)"
                   >
                     {displayName}
                     <ChevronDown
@@ -236,18 +236,18 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
                 {accountOpen && (
                   <div className="absolute right-0 top-full z-20 mt-3 w-44 rounded-md border border-gray-100 bg-white py-2 shadow-lg">
                     <Link
-                      href="/account"
+                      href={`/dashboard/${user.role}`}
                       onClick={() => setAccountOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-green-600"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-(--primary)"
                     >
-                      My Account
+                      Dashboard
                     </Link>
                     <Link
-                      href="/orders"
+                      href="/account"
                       onClick={() => setAccountOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-green-600"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-(--primary)"
                     >
-                      Orders
+                      My Account
                     </Link>
                     <button
                       type="button"
@@ -265,7 +265,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
                 <span className="block text-[11px] text-gray-400">WELCOME</span>
                 <Link
                   href="/auth/login"
-                  className="block text-xs font-bold text-gray-900 hover:text-green-600"
+                  className="block text-xs font-bold text-gray-900 hover:text-(--primary)"
                 >
                   LOG IN / REGISTER
                 </Link>
@@ -315,7 +315,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
                         setCategory(cat);
                         setCategoryOpen(false);
                       }}
-                      className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 hover:text-green-600"
+                      className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 hover:text-(--primary)"
                     >
                       {cat}
                     </button>
@@ -333,7 +333,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
             <button
               type="button"
               aria-label="Search"
-              className="flex shrink-0 items-center justify-center px-3 text-gray-500 hover:text-green-600 sm:px-4"
+              className="flex shrink-0 items-center justify-center px-3 text-gray-500 hover:text-(--primary) sm:px-4"
             >
               <Search className="h-4 w-4" />
             </button>
@@ -424,7 +424,7 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
               >
                 <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-600">
                   <ShoppingCart className="h-4 w-4" />
-                  <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-(--primary) text-[10px] font-bold text-white">
+                  <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-green-600 text-[10px] font-bold text-white">
                     {cartCount}
                   </span>
                 </span>
