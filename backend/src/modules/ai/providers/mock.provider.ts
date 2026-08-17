@@ -1,0 +1,1 @@
+import type {AiProvider} from "./provider.js";export class MockAiProvider implements AiProvider{name="mock";async generate(input:{prompt:string;system?:string}){return `AI provider not configured. Prompt received: ${input.prompt.slice(0,200)}`}}
