@@ -289,7 +289,7 @@ export default function Navbar() {
               <span className="text-left leading-tight">
                 <span className="block text-[11px] text-gray-400">WELCOME</span>
                 <Link
-                  href="/login"
+                  href="/auth/login"
                   onClick={() => setMobileOpen(false)}
                   className="block text-xs font-bold text-gray-900"
                 >
