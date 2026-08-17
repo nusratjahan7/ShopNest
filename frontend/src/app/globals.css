@@ -3,12 +3,13 @@
 
 :root {
   --background: #ffffff;
+  --bg: #EBEDF3;
   --foreground: #171717;
   --primary: #00a63e;
 }
 
 body {
-  background: var(--background);
+  background: var(--bg);
   color: var(--foreground);
   font-family: "Inter", sans-serif;
 }
