@@ -38,7 +38,7 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-      const { error: signInError } = await authClient.signIn.email({
+      const { data, error: signInError } = await authClient.signIn.email({
         email: form.email,
         password: form.password,
       });
@@ -49,7 +49,16 @@ export default function LoginPage() {
       }
 
       toast.success("Welcome back!");
-      router.push("/");
+
+      // redirection based on user role
+      const role = data?.user?.role;
+      if (role === "admin") {
+        router.push("/dashboard/admin");
+      } else if (role === "seller") {
+        router.push("/dashboard/seller");
+      } else {
+        router.push("/");
+      }
     } catch (err) {
       toast.error("Something went wrong. Please try again.");
     } finally {
