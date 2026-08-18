@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation"; // usePathname যোগ করা হয়েছে
 import Link from "next/link";
 import {
   ChevronDown,
@@ -94,6 +94,7 @@ function getDisplayName(user: NavbarUser): string {
 
 export default function NavbarClient({ user }: { user: NavbarUser }) {
   const router = useRouter();
+  const pathname = usePathname();
 
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [category, setCategory] = useState(categories[0]);
@@ -123,6 +124,10 @@ export default function NavbarClient({ user }: { user: NavbarUser }) {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [accountOpen]);
+
+  if (pathname?.startsWith("/dashboard")) {
+    return null;
+  }
 
   const handleLogout = async () => {
     try {

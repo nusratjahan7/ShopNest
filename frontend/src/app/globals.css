@@ -5,8 +5,9 @@
   --background: #ffffff;
   --bg: #EBEDF3;
   --foreground: #171717;
-  --primary: #00a63e;
+  --primary: oklch(62.7% 0.194 149.214);
 }
+
 
 body {
   background: var(--bg);
