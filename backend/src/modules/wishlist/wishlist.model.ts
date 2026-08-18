@@ -1,0 +1,1 @@
+import {Schema,model} from "mongoose";const s=new Schema({userId:{type:String,required:true,unique:true,index:true},productIds:[{type:Schema.Types.ObjectId,ref:"Product"}]},{timestamps:true});export const WishlistModel=model("Wishlist",s);
