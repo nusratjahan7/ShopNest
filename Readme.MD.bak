@@ -1,0 +1,80 @@
+# ShopNest Backend
+
+Boilerplate backend for ShopNest — Node.js · Express.js · TypeScript · MongoDB · Mongoose · Zod · CORS
+
+Auth is handled by **Better Auth** on the frontend. This backend only *verifies*
+credentials (see `src/middlewares/authenticate.middleware.ts`).
+
+## Getting Started
+
+```bash
+npm install
+cp .env.example .env
+# fill in MONGODB_URI, CLIENT_URL, GEMINI_API_KEY, etc.
+npm run dev
+```
+
+Server runs at `http://localhost:5000/api/v1` by default.
+Health check: `GET /api/v1/health`
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server with nodemon + ts-node |
+| `npm run build` | Compile TypeScript to `dist/` |
+| `npm start` | Run compiled server from `dist/` |
+| `npm run lint` | Lint `src/` |
+| `npm run format` | Format `src/` with Prettier |
+
+## Adding a New Module
+
+```
+src/modules/<name>/
+  <name>.model.ts       ← Mongoose schema
+  <name>.types.ts        ← TypeScript types
+  <name>.schema.ts       ← Zod validation schemas
+  <name>.service.ts      ← Business logic
+  <name>.controller.ts   ← Thin request handlers
+  <name>.routes.ts       ← Route definitions
+```
+
+Then register it in `src/routes/index.ts`:
+
+```ts
+import productRoutes from "../modules/products/product.routes";
+apiRouter.use("/products", productRoutes);
+```
+
+That's it — no other shared files need to be touched, so multiple developers
+can work on separate modules without merge conflicts.
+
+## Do NOT Build Yet
+
+- Login / Register / Logout (Better Auth handles this on the frontend)
+- Custom JWT system
+- Full Users / Products / Cart / Wishlist / Orders modules (assigned separately)
+- Rate limiting, Redis, Kafka, Docker (not decided yet)
+- Real Gemini integration (plug into `ai.service.ts` when ready)
+
+## Request Flow
+
+```
+Request → Route → authenticate (if needed) → authorize (if needed)
+        → validate(zodSchema) (if needed) → Controller (asyncHandler)
+        → Service (business logic) → Model → MongoDB
+```
+
+## Response Format
+
+**Success**
+
+```json
+{ "success": true, "message": "Operation successful", "data": {} }
+```
+
+**Error**
+
+```json
+{ "success": false, "message": "Something went wrong" }
+```

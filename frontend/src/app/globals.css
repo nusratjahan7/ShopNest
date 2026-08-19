@@ -3,13 +3,14 @@
 
 :root {
   --background: #ffffff;
+  --bg: #EBEDF3;
   --foreground: #171717;
   --primary: oklch(62.7% 0.194 149.214);
 }
 
 
 body {
-  background: var(--background);
+  background: var(--bg);
   color: var(--foreground);
   font-family: "Inter", sans-serif;
 }

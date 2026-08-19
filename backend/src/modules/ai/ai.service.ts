@@ -1,0 +1,3 @@
+import type { AiProvider } from "./providers/provider.js"; import { OpenAIProvider } from "./providers/openai.provider.js"; import { GeminiProvider } from "./providers/gemini.provider.js";
+const providers:AiProvider[]=[new OpenAIProvider(),new GeminiProvider()];
+export async function generateAiResponse(prompt:string,system?:string){const errors:string[]=[]; for(const p of providers){try{return {provider:p.name,content:await p.generate({prompt,system})};}catch(e){errors.push(`${p.name}: ${e instanceof Error?e.message:"failed"}`);}} throw new Error(`All AI providers failed. ${errors.join(" | ")}`);}

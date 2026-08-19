@@ -1,0 +1,1 @@
+import {Schema,model} from "mongoose";const s=new Schema({productId:{type:Schema.Types.ObjectId,ref:"Product",required:true,index:true},userId:{type:String,required:true},rating:{type:Number,min:1,max:5,required:true},title:String,comment:{type:String,required:true},verifiedPurchase:{type:Boolean,default:false}},{timestamps:true});export const ReviewModel=model("Review",s);
